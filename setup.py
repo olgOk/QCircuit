@@ -9,5 +9,5 @@ setup(
   author_email = 'vokrut42sv@gmail.com.com',      # Type in your E-Mail
   url = 'https://github.com/olgOk/QCircuit',   # Provide either the link to your github or to your website
   python_requires = ('>=3.6.0'),
-  download_url = "https://github.com/olgOk/QCircuit/archive/1.0.tar.gz"
+  download_url = "https://github.com/olgOk/QCircuit/archive/1.0.1.tar.gz"
 )
