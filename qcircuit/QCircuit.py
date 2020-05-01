@@ -93,17 +93,17 @@ class QCircuit:
       full_list = control_gate[0] + [control_gate[1]]
       for qubit in full_list:
         if any(qubit - it_qubit == 1 for it_qubit in full_list):
-          self.graphics_terminal[qubit * 3] += "%s╔╩╗%s   " % (self.colors[color_iterator], self.colors[0])
+          self.graphics_terminal[qubit * 3] += "%s╔═╩═╗%s   " % (self.colors[color_iterator], self.colors[0])
         else:
-          self.graphics_terminal[qubit * 3] += "%s╔═╗%s   " % (self.colors[color_iterator], self.colors[0])
+          self.graphics_terminal[qubit * 3] += "%s╔══╗%s   " % (self.colors[color_iterator], self.colors[0])
         if (qubit == control_gate[1]):
           self.graphics_terminal[qubit * 3 + 1] += "%s║%s║%s───" % (self.colors[color_iterator], self.gate_patch[qubit][1], self.colors[0])
         else:
           self.graphics_terminal[qubit * 3 + 1] += "%s║%s║%s───" % (self.colors[color_iterator], self.gate_patch[qubit][1].lower(), self.colors[0])
         if any(qubit - it_qubit == -1 for it_qubit in full_list):
-          self.graphics_terminal[qubit * 3 + 2] += "%s╚╦╝%s   " % (self.colors[color_iterator], self.colors[0])
+          self.graphics_terminal[qubit * 3 + 2] += "%s╚═╦═╝%s   " % (self.colors[color_iterator], self.colors[0])
         else:
-          self.graphics_terminal[qubit * 3 + 2] += "%s╚═╝%s   " % (self.colors[color_iterator], self.colors[0])
+          self.graphics_terminal[qubit * 3 + 2] += "%s╚══╝%s   " % (self.colors[color_iterator], self.colors[0])
       color_iterator = color_iterator + 1
 
     for qubit in range(self.num_qubits):
@@ -112,9 +112,15 @@ class QCircuit:
         self.graphics_terminal[qubit * 3 + 1] += "──────"
         self.graphics_terminal[qubit * 3 + 2] += "      "
       elif ("Target" not in self.gate_patch[qubit] and "Control" not in self.gate_patch[qubit]):
-        self.graphics_terminal[qubit * 3] +=     "╔═╗   "
-        self.graphics_terminal[qubit * 3 + 1] += "║%s║───" % self.gate_patch[qubit]
-        self.graphics_terminal[qubit * 3 + 2] += "╚═╝   "
+        if len(self.gate_patch[qubit]) > 1:
+          self.graphics_terminal[qubit * 3] +=     "╔═══╗   "
+          self.graphics_terminal[qubit * 3 + 1] += "║%s ║───" % self.gate_patch[qubit]
+          self.graphics_terminal[qubit * 3 + 2] += "╚═══╝   "
+        else:
+          self.graphics_terminal[qubit * 3] +=     "╔═══╗   "
+          self.graphics_terminal[qubit * 3 + 1] += "║ %s ║───" % self.gate_patch[qubit]
+          self.graphics_terminal[qubit * 3 + 2] += "╚═══╝   "
+
 
 
   ########################################## GRAPHICS ############################################
