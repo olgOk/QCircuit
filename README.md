@@ -16,7 +16,7 @@ to speed up calculations using GPU.
 
 ## Basic Example
 
-Here, we build a simple two qubits quantum circuit and applying quantum gates.
+Here, we build a simple two qubits quantum circuit and apply quantum gates.
 
 ```
 from qcircuit import QCircuit as qc
