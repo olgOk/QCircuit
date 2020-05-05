@@ -40,7 +40,7 @@ print("state vector", state_vector)
 my_circuit.visualize() # visualize the circuit
 ```
 
-Please use [tutorials][2] for more examples
+Please see [tutorials][2] for more examples
 
 ## Disclaimer
 
